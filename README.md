@@ -2,6 +2,8 @@
 
 Feita utilizando [express](https://expressjs.com/pt-br/), sem nenhuma conexão com banco de dados, utiliza um array para manipular os dados na api. Para gerar os id's dos repositórios, é utilizada a biblioteca [uuidv4](https://www.npmjs.com/package/uuidv4).
 
+A aplicação também utiliza o [yarn](https://yarnpkg.com/). Para rodar a aplicação na sua máquina, é só ter o __yarn__ instalado, rodar o comando ` yarn ` no seu console para fazer a instalação das dependências, e executar o comando ` yarn dev `.
+
 Url padrão: http://localhost:3333
 
 
