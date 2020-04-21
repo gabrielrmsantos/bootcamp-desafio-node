@@ -7,12 +7,12 @@ const app = express();
 
 const repositoryExists = (request, response, next) => {
   const id = request.params.id;
-  const repositoryIndex = repositories.findIndex(repository => repository.id === id);
+  const index = repositories.findIndex(repository => repository.id === id);
 
-  if(repositoryIndex < 0)
+  if(index < 0)
     return response.status(400).json({ message: 'Repository not exists!' });
 
-  request.body.repositoryIndex = repositoryIndex;
+  request.body.index = index;
   return next();
 }
 
@@ -45,31 +45,31 @@ app.post("/repositories", (request, response) => {
 
 app.put("/repositories/:id", (request, response) => {
   const id = request.params.id;
-  const { title, url, techs, repositoryIndex } = request.body;
+  const { title, url, techs, index } = request.body;
   const repository = {
     id,
-    title: title || repositories[repositoryIndex].title,
-    url: url || repositories[repositoryIndex].url,
-    techs: techs || repositories[repositoryIndex].techs,
-    likes: repositories[repositoryIndex].likes
+    title: title || repositories[index].title,
+    url: url || repositories[index].url,
+    techs: techs || repositories[index].techs,
+    likes: repositories[index].likes
   }
 
-  repositories[repositoryIndex] = repository;
-  return response.json(repositories[repositoryIndex]);
+  repositories[index] = repository;
+  return response.json(repositories[index]);
 });
 
 app.delete("/repositories/:id", (request, response) => {
-  const repositoryIndex = request.body.repositoryIndex;
-  repositories.splice(repositoryIndex, 1);
+  const index = request.body.index;
+  repositories.splice(index, 1);
 
   return response.status(204).send();
 });
 
 app.post("/repositories/:id/like", (request, response) => {
-  const repositoryIndex = request.body.repositoryIndex;
-  repositories[repositoryIndex].likes++;
+  const index = request.body.index;
+  repositories[index].likes++;
 
-  return response.status(201).json(repositories[repositoryIndex]);
+  return response.status(201).json(repositories[index]);
 });
 
 module.exports = app;
