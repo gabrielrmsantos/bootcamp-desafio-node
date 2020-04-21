@@ -40,7 +40,7 @@ app.post("/repositories", (request, response) => {
   }
 
   repositories.push(repository);
-  return response.status(201).json(repositories);
+  return response.status(201).json(repository);
 });
 
 app.put("/repositories/:id", (request, response) => {
