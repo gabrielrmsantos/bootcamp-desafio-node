@@ -20,7 +20,7 @@ Rotas | Método | Descrição | Body
 
 __Um repositório salvo tem a seguinte estrutura básica:__
 
-```javascript
+```json
 
 {
   "id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000",
